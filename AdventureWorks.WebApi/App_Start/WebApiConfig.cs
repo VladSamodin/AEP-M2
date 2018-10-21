@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Routing;
 
 namespace AdventureWorks.WebApi
@@ -12,6 +13,7 @@ namespace AdventureWorks.WebApi
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Services.Add(typeof(IExceptionLogger), new SerilogExceptionLogger());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
