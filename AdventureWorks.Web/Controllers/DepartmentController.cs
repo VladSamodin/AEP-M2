@@ -1,11 +1,13 @@
 ﻿using System.Web.Mvc;
 using AdventureWorks.Services.HumanResources;
+using AdventureWorks.Web.Attributes;
 
 namespace AdventureWorks.Web.Controllers
 {
     public class DepartmentsController : Controller
     {
         // GET: Departments
+        [TrackPageGeneration]
         public ActionResult Index()
         {
             DepartmentService departmentService = new DepartmentService();
@@ -15,6 +17,7 @@ namespace AdventureWorks.Web.Controllers
         }
 
         // GET: Departments/Employees/{id}
+        [TrackPageGeneration]
         public ActionResult Employees(int id)
         {
             DepartmentService departmentService = new DepartmentService();

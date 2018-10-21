@@ -2,6 +2,17 @@
 
 <h2>@ViewBag.Title</h2>
 
+@section scripts {
+<script>
+    $(() => {
+        let path = window.location.pathname;
+        let eventName = `${path} was loaded`;
+        let id = path.substr(path.lastIndexOf('\/') + 1);
+        appInsights.trackEvent(eventName, { id: id });
+    });
+</script>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -18,21 +29,23 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JobTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HireDate)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireDate)
+            </td>
+        </tr>
+    }
 
 </table>
+

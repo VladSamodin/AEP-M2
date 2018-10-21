@@ -4,9 +4,27 @@
     ViewBag.Title = "Departments";
 }
 
+@section scripts {
+<script>
+    $(() => {
+        let eventName = `${window.location.pathname} was loaded`;
+        appInsights.trackEvent(eventName);
+
+        $('#department-table').click(e => {
+            var target = e.target || e.srcElement;
+            if (target.tagName === "A" && target.className === "employee-link") {
+                var path = target.pathname;
+                let id = path.substr(path.lastIndexOf('\/') + 1);
+                appInsights.trackEvent(`${path} was clicked.`, { id: id });
+            }
+        });
+    });
+</script>
+}
+
 <h2>@ViewBag.Title</h2>
 
-<table class="table">
+<table id="department-table" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -15,18 +33,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupName)
-        </td>
-        <td>
-            @Html.ActionLink("View employees", "Employees", new { id = item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td>
+                @Html.ActionLink("View employees", "Employees", new { id = item.Id }, new { @class = "employee-link" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
