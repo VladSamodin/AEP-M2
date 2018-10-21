@@ -54,6 +54,7 @@ namespace AdventureWorks.DbModel
         public virtual DbSet<vJobCandidateEmployment> vJobCandidateEmployments { get; set; }
         public virtual DbSet<vAdditionalContactInfo> vAdditionalContactInfoes { get; set; }
         public virtual DbSet<vStateProvinceCountryRegion> vStateProvinceCountryRegions { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     
         public virtual int uspUpdateEmployeeHireInfo(Nullable<int> businessEntityID, string jobTitle, Nullable<System.DateTime> hireDate, Nullable<System.DateTime> rateChangeDate, Nullable<decimal> rate, Nullable<byte> payFrequency, Nullable<bool> currentFlag)
         {

@@ -51,6 +51,7 @@
         <AssociationConnector Association="AdventureWorksModel.FK_Password_Person_BusinessEntityID" ManuallyRouted="false" />
         <AssociationConnector Association="AdventureWorksModel.FK_PersonPhone_Person_BusinessEntityID" ManuallyRouted="false" />
         <AssociationConnector Association="AdventureWorksModel.FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AdventureWorksModel.Product" Width="1.5" PointX="12.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
